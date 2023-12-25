@@ -53,6 +53,12 @@ app.put();
 //if i want to change something particular i will use patch method rather than updating the whole document or data;
 //it requires only the value or key that needs to be updated
 
+app.patch("/notes/:id", async (req, res) => {
+  const id = req.params.id;
+  const data = await updateNote(id);
+  return res.status(201).json({ result: data });
+});
+
 try {
   app.listen(port, () => {
     console.log("Server running on PORT", port);
