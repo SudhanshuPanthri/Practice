@@ -29,4 +29,8 @@ const createNote = async (title, content) => {
   ]);
 };
 
-module.exports = { getNotes, getNote, createNote };
+const deleteNote = async (id) => {
+  await pool.query(`DELETE FROM notes WHERE id=?`, [id]);
+};
+
+module.exports = { getNotes, getNote, createNote, deleteNote, updateNote };
