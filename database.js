@@ -33,4 +33,12 @@ const deleteNote = async (id) => {
   await pool.query(`DELETE FROM notes WHERE id=?`, [id]);
 };
 
+const updateNote = async (id) => {
+  const [rows] = await pool.query(
+    `UPDATE notes SET title="My New Updated Note" WHERE id=?`,
+    [id]
+  );
+  return rows;
+};
+
 module.exports = { getNotes, getNote, createNote, deleteNote, updateNote };
